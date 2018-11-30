@@ -1,0 +1,65 @@
+.side {
+    -fx-background-color: #2C2B2C;
+}
+
+.redLabel {
+    -fx-background-color: #C70C28;
+}
+
+.greyLabel {
+    -fx-background-color: #B9B9B9;
+}
+
+.menuBar {
+    -fx-background-color: #B9B9B9;
+}
+
+.sideButton {
+    -fx-background-color: #3C3C3C;
+    -fx-background-radius: 0;
+    -fx-text-fill: #C4C4C4;
+    -fx-text-alignment: left;
+}
+
+.sideButton:pressed:hover {
+    -fx-background-color: #181818;
+    -fx-background-radius: 0;
+    -fx-text-fill: #C4C4C4;
+    -fx-text-alignment: left;
+}
+
+.sideButton:hover {
+    -fx-background-color: #080707;
+    -fx-background-radius: 0;
+    -fx-text-fill: #C4C4C4;
+    -fx-text-alignment: left;
+}
+
+.optionButton {
+    -fx-background-color: #3C3C3C;
+    -fx-background-radius: 5;
+    -fx-text-fill: #C4C4C4;
+    -fx-text-alignment: left;
+}
+
+.optionButton:pressed:hover {
+    -fx-background-color: #181818;
+    -fx-background-radius: 5;
+    -fx-text-fill: #C4C4C4;
+    -fx-text-alignment: left;
+}
+
+.optionButton:hover {
+    -fx-background-color: #080707;
+    -fx-background-radius: 5;
+    -fx-text-fill: #C4C4C4;
+    -fx-text-alignment: left;
+}
+
+.textLabel {
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+
+
+

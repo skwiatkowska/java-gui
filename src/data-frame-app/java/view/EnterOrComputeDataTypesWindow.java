@@ -29,7 +29,7 @@ public class EnterOrComputeDataTypesWindow {
             else if (row[i].contains("-"))
                 computedTypesArray[i] = "DateTime";
             else if (row[i].matches("[0-9]+"))
-                computedTypesArray[i] = "Double";
+                computedTypesArray[i] = "Integer";
             else
                 computedTypesArray[i] = "String";
         }

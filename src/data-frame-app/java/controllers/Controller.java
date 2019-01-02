@@ -364,6 +364,7 @@ public class Controller {
             }
 
             xAxisCombo1.getItems().removeAll(xAxisCombo1.getItems());
+            xAxisCombo2.getItems().removeAll(xAxisCombo2.getItems());
             yAxisCombo.getItems().removeAll(yAxisCombo.getItems());
             for (String s : groupedModel.names) {
                 xAxisCombo1.getItems().add(s);
@@ -401,6 +402,8 @@ public class Controller {
                 throw new IllegalArgumentException("Cannot do the '" + xAxisCol + "' vs. '" + yAxisCol + "' chart.");
         } catch (IllegalArgumentException e) {
             showAlert(Alert.AlertType.ERROR, "Change axes. ", e.getMessage());
+        } catch (NullPointerException e) {
+            showAlert(Alert.AlertType.ERROR, "Both axes must be chosen.", "Choose X and Y axes.");
         }
         try {
             for (int i = 0; i < groupedModel.data.get(0).size(); i++) {
@@ -421,16 +424,47 @@ public class Controller {
     }
 
 
-    public void handleScatterOrBarChartButtonClick(ActionEvent actionEvent) {
+    public void handleScatterChartButtonClick(ActionEvent actionEvent) {
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
         XYChart<String, Number> chart = null;
-        if (((Button) actionEvent.getSource()).getText().equals("SCATTER CHART")) {
-            chart = new ScatterChart<String, Number>(xAxis, yAxis);
+        chart = new ScatterChart<String, Number>(xAxis, yAxis);
+        xAxis.setLabel(xAxisCombo1.getValue());
+        yAxis.setLabel("Returns to date");
+        chart.setTitle("Data Overview");
+
+        try {
+            String[] yAxesCols = yAxesColNamesTextField.getText().split("\\s");
+
+            for (int i = 0; i < yAxesCols.length; i++) {
+                XYChart.Series<String, Number> series = new XYChart.Series<>();
+                series.setName(yAxesCols[i]);
+
+                for (int j = 0; j < groupedModel.data.get(0).size(); j++) {
+                    series.getData().add(new XYChart.Data<>(groupedModel.get(xAxisCombo2.getValue()).get(j).toString(), Double.parseDouble(groupedModel.get(yAxesCols[i]).get(j).toString())));
+                }
+
+                chart.getData().add(series);
+            }
+            Stage chartStage = new Stage();
+            Scene chartScene = new Scene(chart, 550, 400);
+            chartStage.setTitle(((Button) actionEvent.getSource()).getText());
+            chartStage.setScene(chartScene);
+            chartStage.show();
+        } catch (IllegalArgumentException e) {
+            showAlert(Alert.AlertType.ERROR, "Wrong Y-axis chosen", "Change Y-axes columns");
+        } catch (IndexOutOfBoundsException e) {
+            showAlert(Alert.AlertType.ERROR, "Wrong column name", "Cannot recognize given name/names");
         }
-        else if (((Button) actionEvent.getSource()).getText().equals("BAR CHART")) {
-            chart = new BarChart<String, Number>(xAxis, yAxis);
-        }
+
+    }
+
+
+    public void handleBarChartButtonClick(ActionEvent actionEvent) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        XYChart<String, Number> chart = null;
+        chart = new BarChart<String, Number>(xAxis, yAxis);
         xAxis.setLabel(xAxisCombo1.getValue());
         yAxis.setLabel("Returns to date");
         chart.setTitle("Data Overview");

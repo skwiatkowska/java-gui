@@ -212,12 +212,12 @@
                                                                         <Insets left="5.0" />
                                                                     </HBox.margin>
                                                                 </TextField>
-                                                                  <Button fx:id="scatterChartButton" mnemonicParsing="false" onAction="#handleScatterOrBarChartButtonClick" prefHeight="25.0" prefWidth="64.0" styleClass="optionButton" text="SCATTER">
+                                                                  <Button fx:id="scatterChartButton" mnemonicParsing="false" onAction="#handleScatterChartButtonClick" prefHeight="25.0" prefWidth="64.0" styleClass="optionButton" text="SCATTER">
                                                    <HBox.margin>
                                                       <Insets left="3.0" />
                                                    </HBox.margin>
                                                                   </Button>
-                                                                  <Button fx:id="boxChartButton" mnemonicParsing="false" onAction="#handleScatterOrBarChartButtonClick" prefHeight="25.0" prefWidth="55.0" styleClass="optionButton" text="BAR">
+                                                                  <Button fx:id="boxChartButton" mnemonicParsing="false" onAction="#handleBarChartButtonClick" prefHeight="25.0" prefWidth="55.0" styleClass="optionButton" text="BAR">
                                                    <HBox.margin>
                                                       <Insets left="5.0" />
                                                    </HBox.margin>
